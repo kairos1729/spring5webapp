@@ -3,6 +3,7 @@ package guru.springframework.spring5webapp.model;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Created by jt on 5/16/17.
@@ -63,6 +64,10 @@ public class Author {
 
     public void setBooks(Set<Book> books) {
         this.books = books;
+    }
+
+    public String getBookTitles() {
+        return getBooks().stream().map(Book::getTitle).collect(Collectors.joining(", "));
     }
 
     @Override
